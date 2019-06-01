@@ -1,3 +1,5 @@
+//my pattern Builder
+
 package task.fourth;
 
 public class Undergroundstandup {
@@ -8,6 +10,21 @@ public class Undergroundstandup {
     private int priceTicket;
     private String namePhotographer;
     private String nameSoundEngineer;
+
+    public static void main(String[] args) {
+        Undergroundstandup event = Undergroundstandup.newBuilder()
+                .setNameHost("Svyat Zagaykevich")
+                .setNameComic("Andrey Shchegel")
+                .setLocationEvent("Bel'etage")
+                .setDateEvent("22.09.2019")
+                .setPriceTicket(450)
+                .setNamePhotographer("Mariana Shama")
+                .setNameSoundEngineer("Ilya Kravtsov")
+                .build();
+    }
+
+    private Undergroundstandup() {
+    }
 
     public String getNameHost() {
         return nameHost;
@@ -37,50 +54,52 @@ public class Undergroundstandup {
         return nameSoundEngineer;
     }
 
-    public static class Builder {
-        private Undergroundstandup newUndergroundstandup;
+    public static Builder newBuilder() {
+        return new Undergroundstandup().new Builder();
+    }
 
-        public Builder() {
-            newUndergroundstandup = new Undergroundstandup();
+    public class Builder {
+        private Builder() {
         }
 
-        public Builder WithNameHost(String nameHost) {
-            newUndergroundstandup.nameHost = nameHost;
+        public Builder setNameHost(String nameHost) {
+            Undergroundstandup.this.nameHost = nameHost;
             return this;
         }
 
-        public Builder WithNameComic(String nameComic) {
-            newUndergroundstandup.nameComic = nameComic;
+        public Builder setNameComic(String nameComic) {
+            Undergroundstandup.this.nameComic = nameComic;
             return this;
         }
 
-        public Builder WithLocationEvent(String locationEvent) {
-            newUndergroundstandup.locationEvent = locationEvent;
+        public Builder setLocationEvent(String locationEvent) {
+            Undergroundstandup.this.locationEvent = locationEvent;
             return this;
         }
 
-        public Builder WithDateEvent(String dateEvent) {
-            newUndergroundstandup.dateEvent = dateEvent;
+        public Builder setDateEvent(String dateEvent) {
+            Undergroundstandup.this.dateEvent = dateEvent;
             return this;
         }
 
-        public Builder WithPriceTicket(int priceTicket) {
-            newUndergroundstandup.priceTicket = priceTicket;
+        public Builder setPriceTicket(int priceTicket) {
+            Undergroundstandup.this.priceTicket = priceTicket;
             return this;
         }
 
-        public Builder WithNamePhotographer(String namePhotographer) {
-            newUndergroundstandup.namePhotographer = namePhotographer;
+        public Builder setNamePhotographer(String namePhotographer) {
+            Undergroundstandup.this.namePhotographer = namePhotographer;
             return this;
         }
 
-        public Builder WithNameSoundEngineer(String nameSoundEngineer) {
-            newUndergroundstandup.nameSoundEngineer = nameSoundEngineer;
+        public Builder setNameSoundEngineer(String nameSoundEngineer) {
+            Undergroundstandup.this.nameSoundEngineer = nameSoundEngineer;
             return this;
         }
 
         public Undergroundstandup build() {
-            return newUndergroundstandup;
+            return Undergroundstandup.this;
         }
     }
 }
+
